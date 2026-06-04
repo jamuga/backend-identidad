@@ -4,3 +4,10 @@ __pycache__/
 *.pyc
 .idea/
 .vscode/
+.env
+*.log
+*.sqlite
+*.key
+*.pem
+*.crt
+*.csr
