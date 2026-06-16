@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Votación</title>
+</head>
+
+<body style="background:#0f172a;color:white;text-align:center;margin-top:80px">
+
+<h1>Sistema de Votación</h1>
+
+<p>ID: __GLOBAL_ID__</p>
+
+<button onclick="openModal('pp')">PP</button>
+<button onclick="openModal('psoe')">PSOE</button>
+<button onclick="openModal('vox')">VOX</button>
+
+<div id="modal" style="display:none">
+    <h3 id="modalText"></h3>
+    <button onclick="confirmVote()">Confirmar</button>
+</div>
+
+<script>
+let selectedParty = "";
+
+function openModal(party) {
+    selectedParty = party;
+    document.getElementById("modalText").innerText =
+        "Confirmar voto a " + party.toUpperCase();
+    document.getElementById("modal").style.display = "block";
+}
+
+async function confirmVote() {
+
+    await fetch("__API_URL__/vote", {
+        method: "POST",
+        headers: {
+            "Content-Type": "application/json",
+            "x-api-key": "__API_KEY__"
+        },
+        credentials: "include",
+        body: JSON.stringify({
+            party: selectedParty,
+            global_id: "__GLOBAL_ID__"
+        })
+    });
+
+    alert("Voto enviado");
+}
+</script>
+
+</body>
+</html>

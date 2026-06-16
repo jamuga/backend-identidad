@@ -1,13 +1,25 @@
-venv/
-.env
+# Python
 __pycache__/
 *.pyc
-.idea/
-.vscode/
+*.pyo
+
+# Virtual env
+venv/
+
+# Secrets
 .env
-*.log
-*.sqlite
-*.key
 *.pem
+*.key
 *.crt
 *.csr
+*.p12
+
+# IDE
+.vscode/
+.idea/
+
+# Logs
+*.log
+
+# OS
+.DS_Store
